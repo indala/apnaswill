@@ -162,12 +162,7 @@ export default function About() {
             <motion.div
               initial={{ x: 30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="relative aspect-square rounded-[3rem] overflow-hidden bg-maroon/5 border-2 border-gold/20 flex items-center justify-center p-12"
-            >
-               <div className="absolute inset-0 opacity-10 pointer-events-none">
-                  <img src="/brochure_assets/page1_img1.jpeg" className="w-full h-full object-cover" />
-               </div>
+              >
                <div className="relative z-10 text-center">
                   <span className="text-8xl mb-8 block">🛡️</span>
                   <p className="heading-serif text-3xl font-bold text-maroon italic">"Guiding every stage of life with integrity."</p>
@@ -208,9 +203,6 @@ export default function About() {
               </motion.div>
             ))}
           </div>
-        </div>
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <img src="/brochure_assets/page2_img30.png" className="w-full h-full object-cover" />
         </div>
       </section>
     </div>
