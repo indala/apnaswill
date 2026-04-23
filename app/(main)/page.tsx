@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import StatusRing from "@/components/StatusRing";
+import WealthySection from "@/components/WealthySection";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -69,8 +70,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Status Section */}
-            <div className="flex flex-col items-center justify-center space-y-4">
+            {/* Right column: Status Ring */}
+            <div className="flex flex-col items-center justify-center gap-4">
               <StatusRing />
               <p className="text-gold font-bold text-sm uppercase tracking-widest">Daily Updates</p>
             </div>
@@ -79,18 +80,19 @@ export default function Home() {
         {/* Decorative element */}
         <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-gold opacity-10 blur-3xl"></div>
         <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <img src="/brochure_assets/page1_img1.jpeg" className="w-full h-full object-cover mix-blend-overlay" />
+          <img src="/brochure_assets/WealthyGlobalWebIcon.jpeg" className="w-full h-full object-cover mix-blend-overlay" />
         </div>
       </motion.section>
 
       {/* Scale of Trust Stats */}
       <section className="py-20 bg-zinc-50 border-y border-gold/10 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { label: "Institutional Partners", value: "50+", desc: "Direct access to India's leading powerhouses." },
-              { label: "Product Portfolio", value: "200+", desc: "Curated selection of elite financial instruments." },
-              { label: "GIFT City Access", value: "Global", desc: "Exclusive offshore investment portals." }
+              { label: "Investments Executed", value: "₹6,000 Cr+", desc: "Via the Wealthy platform across India." },
+              { label: "Investors on Platform", value: "1,00,000+", desc: "Trusted by families across the country." },
+              { label: "Offices Across India", value: "20+", desc: "Nationwide presence through Wealthy network." },
+              { label: "GIFT City Access", value: "Global", desc: "Exclusive offshore investment portals via IFSC." }
             ].map((stat, i) => (
               <motion.div 
                 key={stat.label}
@@ -105,9 +107,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-        </div>
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-          <img src="/brochure_assets/page2_img30.png" className="w-full h-full object-cover" />
         </div>
       </section>
 
@@ -308,10 +307,10 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <img src="/brochure_assets/page2_img3.png" className="w-full h-full object-contain" />
-        </div>
       </section>
+
+      {/* Wealthy Platform Section */}
+      <WealthySection />
 
       {/* CTA Section */}
       <motion.section

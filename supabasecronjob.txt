@@ -1,0 +1,162 @@
+// Supabase Edge Function: send-daily-status-emails
+// Dummy mode: does NOT call SendGrid yet. It logs the email payloads.
+
+type Subscriber = { id: string; email: string };
+
+type StatusRow = {
+  id: string;
+  image_url: string;
+  created_at: string;
+};
+
+const TIMEZONE = 'Asia/Kolkata';
+
+function getKolkataDateRangeNow() {
+  // Compute [start, end) for "yesterday" in Asia/Kolkata.
+  const now = new Date();
+  // Use the locale trick to get date parts in a specific TZ without extra deps.
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: TIMEZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(now);
+
+  const y = Number(parts.find((p) => p.type === 'year')?.value);
+  const m = Number(parts.find((p) => p.type === 'month')?.value);
+  const d = Number(parts.find((p) => p.type === 'day')?.value);
+
+  // Yesterday date in that TZ
+  const endLocal = new Date(Date.UTC(y, m - 1, d, 0, 0, 0)); // treat as UTC midnight representing local midnight
+  const startLocal = new Date(endLocal.getTime() - 24 * 60 * 60 * 1000);
+
+  // Convert to ISO strings for comparisons with timestamptz.
+  // This approximation works because we constructed based on local date boundaries.
+  return {
+    start: new Date(startLocal.getTime()),
+    end: new Date(endLocal.getTime()),
+  };
+}
+
+Deno.serve(async (req: Request) => {
+  if (req.method !== 'POST' && new URL(req.url).pathname.endsWith('/send-daily-status-emails')) {
+    // Allow cron to hit via POST; otherwise respond.
+  }
+
+  const supabaseUrl = Deno.env.get('SUPABASE_URL');
+  const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  if (!supabaseUrl || !serviceRoleKey) {
+    return new Response(JSON.stringify({ error: 'Missing Supabase env vars' }), { status: 500 });
+  }
+
+  const { start, end } = getKolkataDateRangeNow();
+
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${serviceRoleKey}`,
+  };
+
+  // 1) Fetch subscribers
+  const subsRes = await fetch(`${supabaseUrl}/rest/v1/subscribers?select=id,email`, {
+    method: 'GET',
+    headers: {
+      ...headers,
+      apikey: serviceRoleKey,
+    },
+  });
+  if (!subsRes.ok) {
+    const text = await subsRes.text();
+    return new Response(text, { status: subsRes.status });
+  }
+  const subscribers = (await subsRes.json()) as Subscriber[];
+
+  // 2) Fetch statuses for yesterday which haven't been notified yet
+  const isoStart = start.toISOString();
+  const isoEnd = end.toISOString();
+
+  const statusesRes = await fetch(
+    `${supabaseUrl}/rest/v1/statuses?select=id,image_url,created_at&created_at=gte.${encodeURIComponent(isoStart)}&created_at=lt.${encodeURIComponent(isoEnd)}&last_notified_at=is.null`,
+    {
+      method: 'GET',
+      headers: {
+        ...headers,
+        apikey: serviceRoleKey,
+      },
+    }
+  );
+  if (!statusesRes.ok) {
+    const text = await statusesRes.text();
+    return new Response(text, { status: statusesRes.status });
+  }
+  const statuses = (await statusesRes.json()) as StatusRow[];
+
+  if (subscribers.length === 0 || statuses.length === 0) {
+    console.info('No subscribers or no statuses to notify', {
+      subscribers: subscribers.length,
+      statuses: statuses.length,
+      window: { start: isoStart, end: isoEnd },
+    });
+    return new Response(JSON.stringify({ ok: true, sent: 0 }));
+  }
+
+  // 3) Dummy send: build payload and log
+  let totalEmails = 0;
+  for (const sub of subscribers) {
+    const subject = 'Daily status updates';
+    const html = `<!doctype html><html><body>
+      <h2>${subject}</h2>
+      <p>Statuses for ${TIMEZONE} (${isoStart.slice(0, 10)})</p>
+      ${statuses
+        .map(
+          (s) => `
+            <div style="margin:12px 0;">
+              <img src="${s.image_url}" style="max-width:600px; width:100%; height:auto;" />
+            </div>
+          `
+        )
+        .join('')}
+    </body></html>`;
+
+    console.info('Dummy SendGrid payload', { to: sub.email, subject, htmlLength: html.length });
+    totalEmails += 1;
+  }
+
+  // 4) Mark statuses as notified
+  const nowIso = new Date().toISOString();
+  const updateRes = await fetch(
+    `${supabaseUrl}/rest/v1/statuses?last_notified_at=eq.${encodeURIComponent('null')}`,
+    {
+      method: 'PATCH',
+      headers: {
+        ...headers,
+        apikey: serviceRoleKey,
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify({ last_notified_at: nowIso }),
+    }
+  );
+
+  // If the query above doesn’t narrow correctly, fall back to a second update using created_at.
+  if (!updateRes.ok) {
+    console.warn('Mark notified (fallback)', await updateRes.text());
+
+    const patchRes = await fetch(
+      `${supabaseUrl}/rest/v1/statuses?created_at=gte.${encodeURIComponent(isoStart)}&created_at=lt.${encodeURIComponent(isoEnd)}&last_notified_at=is.null`,
+      {
+        method: 'PATCH',
+        headers: {
+          ...headers,
+          apikey: serviceRoleKey,
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify({ last_notified_at: nowIso }),
+      }
+    );
+
+    if (!patchRes.ok) {
+      return new Response(await patchRes.text(), { status: patchRes.status });
+    }
+  }
+
+  return new Response(JSON.stringify({ ok: true, sent: totalEmails, statuses: statuses.length }));
+});

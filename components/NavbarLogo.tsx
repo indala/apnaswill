@@ -9,7 +9,7 @@ export default function NavbarLogo() {
       <img
         src="/logo.png"
         alt="APNAS Will"
-        className="h-12 w-auto object-contain brightness-0 invert"
+        className="h-12 w-auto object-contain"
         onError={(e) => {
           (e.target as any).style.display = "none";
           const sibling = (e.target as any).nextSibling;
@@ -18,7 +18,7 @@ export default function NavbarLogo() {
       />
       <div
         className="h-10 w-10 rounded-full bg-gold items-center justify-center text-maroon font-bold text-xl"
-        style={{ display: "none" }} // Hidden by default, shown via onError if logo fails
+        style={{ display: "none" }}
       >
         A
       </div>

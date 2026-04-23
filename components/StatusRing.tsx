@@ -162,7 +162,7 @@ export default function StatusRing() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-100 flex items-center justify-center bg-zinc-950/98 backdrop-blur-3xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950/98 backdrop-blur-3xl"
           >
             {/* Close Button */}
             <motion.button 
@@ -177,9 +177,9 @@ export default function StatusRing() {
               </svg>
             </motion.button>
             
-            <div className="relative max-w-2xl w-full px-6 flex flex-col h-full py-20 justify-center">
+            <div className="relative max-w-2xl w-full px-6 flex flex-col h-full py-16 justify-center">
               {/* Progress Tracker */}
-              <div className="flex gap-2 mb-10">
+              <div className="flex gap-2 mb-6">
                 {statuses.map((_, i) => (
                   <div key={i} className="h-1.5 flex-1 bg-white/5 rounded-full overflow-hidden">
                     <motion.div 
@@ -197,8 +197,8 @@ export default function StatusRing() {
                 ))}
               </div>
 
-              {/* Main Content Area */}
-              <div className="relative aspect-video rounded-[3rem] overflow-hidden shadow-[0_0_150px_rgba(184,134,11,0.2)] border border-white/5 group">
+              {/* Main Content Area — fills remaining height */}
+              <div className="relative flex-1 min-h-0 rounded-[2rem] overflow-hidden shadow-[0_0_150px_rgba(184,134,11,0.2)] border border-white/5 group">
                 <AnimatePresence mode="wait">
                   {getMediaKind(statuses[currentIndex].image_url) === "image" && (
                     <motion.img
@@ -208,7 +208,7 @@ export default function StatusRing() {
                       animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                       exit={{ opacity: 0, x: -100, filter: "blur(20px)" }}
                       transition={{ type: "spring", damping: 20, stiffness: 100 }}
-                      className="w-full h-full object-contain"
+                      className="absolute inset-0 w-full h-full object-contain"
                     />
                   )}
                   {getMediaKind(statuses[currentIndex].image_url) === "video" && (
@@ -219,7 +219,7 @@ export default function StatusRing() {
                       animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                       exit={{ opacity: 0, x: -100, filter: "blur(20px)" }}
                       transition={{ type: "spring", damping: 20, stiffness: 100 }}
-                      className="w-full h-full object-contain"
+                      className="absolute inset-0 w-full h-full object-contain"
                       controls
                       playsInline
                       preload="metadata"
@@ -234,19 +234,19 @@ export default function StatusRing() {
                       animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                       exit={{ opacity: 0, x: -100, filter: "blur(20px)" }}
                       transition={{ type: "spring", damping: 20, stiffness: 100 }}
-                      className="h-full w-full bg-white"
+                      className="absolute inset-0 w-full h-full bg-white"
                     />
                   )}
                 </AnimatePresence>
                 
                 {/* Navigation Hotzones */}
-                <div className="absolute inset-0 flex">
-                  <div className="w-1/2 h-full cursor-pointer z-10" onClick={prevStatus}></div>
-                  <div className="w-1/2 h-full cursor-pointer z-10" onClick={nextStatus}></div>
+                <div className="absolute inset-0 flex z-10">
+                  <div className="w-1/2 h-full cursor-pointer" onClick={prevStatus}></div>
+                  <div className="w-1/2 h-full cursor-pointer" onClick={nextStatus}></div>
                 </div>
 
                 {/* Arrow Hints */}
-                <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-20 opacity-0 group-hover:opacity-100 transition-opacity">
                    <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 text-white shadow-2xl">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -265,7 +265,7 @@ export default function StatusRing() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="mt-12 flex items-center justify-between px-4"
+                className="mt-6 flex items-center justify-between px-2"
               >
                 <div className="flex items-center gap-5">
                    <div className="h-16 w-16 rounded-3xl bg-maroon border border-gold/30 flex items-center justify-center text-xl font-bold text-white shadow-xl">AW</div>

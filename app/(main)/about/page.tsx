@@ -121,17 +121,17 @@ export default function About() {
                 <div className="absolute inset-0 bg-linear-to-t from-maroon via-transparent to-transparent opacity-80"></div>
               </div>
               
-              {/* Floating Experience Badge */}
+              {/* Floating Credential Badge */}
               <motion.div 
                 initial={{ scale: 0, rotate: -20 }}
                 whileInView={{ scale: 1, rotate: 12 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, type: "spring" }}
-                className="absolute -bottom-10 -left-10 bg-gold p-10 rounded-[2.5rem] shadow-2xl border-[6px] border-maroon transform rotate-12 hover:rotate-0 transition-transform duration-500"
+                className="absolute -bottom-10 -left-10 bg-gold p-8 rounded-[2.5rem] shadow-2xl border-[6px] border-maroon transform rotate-12 hover:rotate-0 transition-transform duration-500"
               >
                 <p className="text-maroon font-black text-center">
-                  <span className="text-5xl block mb-1">PRO</span>
-                  <span className="text-[10px] uppercase tracking-[0.4em] font-bold">In Financial Services</span>
+                  <span className="text-2xl block mb-1">MBA · M.Com</span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold">CA Finalist · PGDCA</span>
                 </p>
               </motion.div>
             </motion.div>
@@ -179,15 +179,15 @@ export default function About() {
             <h2 className="heading-serif text-4xl font-bold text-maroon mb-6 tracking-tight">Our Institutional Strength</h2>
             <div className="h-1 w-20 bg-gold mx-auto mb-8"></div>
             <p className="text-zinc-500 text-lg max-w-2xl mx-auto">
-              Our authority is built on strategic partnerships with the world's most trusted financial institutions.
+              Our advisory is backed by partnerships with India's leading financial institutions and platforms.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { title: "Direct Partner Access", desc: "No intermediaries. We work directly with institutional leads from SBI Life, HDFC, and ICICI.", icon: "🏢" },
-              { title: "GIFT City Gateway", desc: "Official access to offshore investment opportunities through our IFSC-registered portals.", icon: "🌐" },
-              { title: "Pre-IPO Exclusive", desc: "Early-stage access to India's most promising unicorns before they hit the public market.", icon: "📈" }
+              { title: "Direct Partner Access", desc: "We work directly with institutional representatives from SBI Life, HDFC Life, ICICI Prudential, and more.", icon: "🏢" },
+              { title: "GIFT City Access", desc: "Access to offshore investment opportunities through GIFT City (IFSC) via the Wealthy platform.", icon: "🌐" },
+              { title: "Pre-IPO Opportunities", desc: "Access to pre-IPO investment opportunities in select high-growth companies through our network.", icon: "📈" }
             ].map((feature, i) => (
               <motion.div
                 key={feature.title}

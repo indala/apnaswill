@@ -56,7 +56,7 @@ export default function Services() {
         "Global Emerging Allocation",
         "Min. Investment: $150,000 USD"
       ],
-      description: "Access exclusive global investment opportunities and tax-efficient offshore structures through our GIFT City (IFSC) portal."
+      description: "Access global investment opportunities and tax-efficient offshore structures through GIFT City (IFSC) via the Wealthy platform."
     },
     {
       id: "equity",
@@ -64,12 +64,12 @@ export default function Services() {
       icon: "🏛️",
       items: [
         "Stocks & ETF Portfolio",
-        "Pre-IPO Access (NSE, Zepto)",
+        "Pre-IPO Access (Select Opportunities)",
         "Metropolitan Stock Exchange",
-        "Futures & Options Research",
-        "Wealth Signals (Live Calls)"
+        "Futures & Options (Research Support)",
+        "Equity Portfolio Review"
       ],
-      description: "Gain a competitive edge with direct equity access and exclusive pre-IPO opportunities in India's fastest-growing unicorns."
+      description: "Gain a competitive edge with direct equity access and pre-IPO opportunities in India's high-growth companies."
     },
     {
       id: "future",
@@ -115,7 +115,7 @@ export default function Services() {
           </motion.p>
         </div>
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img src="/brochure_assets/page1_img1.jpeg" className="w-full h-full object-cover mix-blend-overlay" />
+          <img src="/brochure_assets/WealthyGlobalWebIcon.jpeg" className="w-full h-full object-cover mix-blend-overlay" />
         </div>
       </motion.section>
 
@@ -166,7 +166,7 @@ export default function Services() {
                         <svg className="h-5 w-5 text-gold shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span className={`text-sm font-medium ${item.includes("SBI Life") ? "font-bold text-maroon" : ""}`}>{item}</span>
+                        <span className="text-sm font-medium">{item}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -251,8 +251,8 @@ export default function Services() {
       {/* Institutional Network Wall */}
       <EcosystemWall />
 
-      <section className="py-32 bg-zinc-950 relative overflow-hidden">
-        <div className="absolute inset-0 bg-maroon/5"></div>
+      <section className="py-24 bg-zinc-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-maroon/3"></div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10">
           <motion.h3 
             initial={{ opacity: 0 }}
@@ -262,7 +262,7 @@ export default function Services() {
           >
             Strategic Partnerships
           </motion.h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-16 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center">
               {[
                 { name: "SBI Life", url: "/brochure_assets/SbiMutualFund01.png" },
                 { name: "Axis Mutual Fund", url: "/brochure_assets/AxisMutualFund01.png" },
@@ -278,10 +278,12 @@ export default function Services() {
                 whileHover={{ scale: 1.1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex flex-col items-center gap-4 transition-all cursor-pointer"
+                className="flex flex-col items-center gap-3 transition-all cursor-default"
                >
-                 <img src={partner.url} alt={partner.name} className="h-14 object-contain" />
-                 <span className="text-[9px] font-bold text-maroon/40 uppercase tracking-widest">{partner.name}</span>
+                 <div className="bg-white rounded-2xl p-4 shadow-sm border border-gold/10 w-full flex items-center justify-center h-16">
+                   <img src={partner.url} alt={partner.name} className="h-10 object-contain" />
+                 </div>
+                 <span className="text-[9px] font-bold text-maroon/50 uppercase tracking-widest">{partner.name}</span>
                </motion.div>
              ))}
           </div>
