@@ -28,6 +28,32 @@ body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
+/* Custom Branded Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--maroon);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 6px;
+  border: 3px solid var(--maroon);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e0c58e; /* Lighter gold on hover */
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--maroon);
+}
+
 .heading-serif {
   font-family: "Playfair Display", serif;
 }
@@ -35,7 +61,8 @@ body {
 /* Custom Utilities */
 .glass-card {
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(197, 160, 89, 0.2);
 }
 

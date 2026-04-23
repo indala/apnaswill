@@ -51,13 +51,6 @@ const goals = [
   { icon: "🏠", label: "Home Purchase" },
 ];
 
-const wealthyStats = [
-  { value: "₹6,000 Cr+", label: "Investments Executed" },
-  { value: "1,00,000+", label: "Investors on Platform" },
-  { value: "20+", label: "Offices Across India" },
-  { value: "SEBI", label: "Registered & Regulated" },
-];
-
 function SIPCalculator() {
   const [mode, setMode] = useState<"sip" | "lumpsum">("sip");
   const [monthly, setMonthly] = useState(5000);
@@ -121,7 +114,7 @@ function SIPCalculator() {
             key={`${futureValue}-${mode}`}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="heading-serif text-4xl font-bold text-gold mb-3"
+            className="text-4xl font-bold text-gold mb-3"
           >
             {fmt(futureValue)}
           </motion.p>
@@ -158,6 +151,7 @@ function SIPCalculator() {
               </label>
               <input
                 type="range"
+                title="Monthly Investment Amount"
                 min={500}
                 max={100000}
                 step={500}
@@ -165,7 +159,7 @@ function SIPCalculator() {
                 onChange={(e) => setMonthly(Number(e.target.value))}
                 className="w-full accent-gold h-2 rounded-full"
               />
-              <div className="flex justify-between text-xs text-zinc-400 mt-1">
+              <div className="flex justify-between text-xs text-maroon/40 mt-1">
                 <span>₹500</span>
                 <span>₹1,00,000</span>
               </div>
@@ -185,6 +179,7 @@ function SIPCalculator() {
               </label>
               <input
                 type="range"
+                title="Lumpsum Investment Amount"
                 min={10000}
                 max={10000000}
                 step={10000}
@@ -207,6 +202,7 @@ function SIPCalculator() {
           </label>
           <input
             type="range"
+            title="Investment Period in Years"
             min={1}
             max={30}
             step={1}
@@ -214,19 +210,19 @@ function SIPCalculator() {
             onChange={(e) => setYears(Number(e.target.value))}
             className="w-full accent-gold h-2 rounded-full"
           />
-          <div className="flex justify-between text-xs text-zinc-400 mt-1">
+          <div className="flex justify-between text-xs text-maroon/40 mt-1">
             <span>1 yr</span>
             <span>30 yrs</span>
           </div>
         </div>
 
-        {/* Progress bar showing invested vs gains */}
+        {/* Progress bar */}
         <div>
-          <div className="flex justify-between text-xs text-zinc-500 mb-2">
+          <div className="flex justify-between text-xs text-maroon/50 mb-2">
             <span>Invested Amount</span>
             <span>Estimated Returns</span>
           </div>
-          <div className="h-3 rounded-full bg-zinc-100 overflow-hidden flex">
+          <div className="h-3 rounded-full bg-maroon/10 overflow-hidden flex">
             <motion.div
               className="h-full bg-maroon rounded-l-full"
               animate={{ width: `${(invested / futureValue) * 100}%` }}
@@ -240,7 +236,7 @@ function SIPCalculator() {
           </div>
         </div>
 
-        <p className="text-[10px] text-zinc-400 text-center">
+        <p className="text-[10px] text-maroon/40 text-center">
           *Assumed {rate}% p.a. returns. Actual returns may vary. Not financial advice.
         </p>
       </div>
@@ -248,30 +244,19 @@ function SIPCalculator() {
   );
 }
 
-export default function WealthySection() {
+export default function InvestmentSection() {
   return (
     <div className="flex flex-col">
-      {/* Wealthy Partnership Banner */}
-      <section className="py-6 bg-zinc-950 border-b border-gold/10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-6 text-center">
-            <span className="text-white/40 text-xs uppercase tracking-widest font-bold">
-              Investments managed via
-            </span>
-            <div className="flex items-center gap-3 bg-white/5 border border-gold/20 rounded-2xl px-6 py-3">
-              <span className="text-gold font-black text-lg tracking-tight">wealthy</span>
-              <span className="text-white/20 text-xs">|</span>
-              <span className="text-white/60 text-xs font-medium">SEBI Registered Platform</span>
-            </div>
-            <div className="flex flex-wrap gap-6">
-              {wealthyStats.map((s) => (
-                <div key={s.label} className="text-center">
-                  <p className="text-gold font-black text-sm">{s.value}</p>
-                  <p className="text-white/30 text-[10px] uppercase tracking-wider">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Premium Trust Banner */}
+      <section className="py-12 bg-[#1a0404] border-b border-gold/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gold/5 opacity-20 pointer-events-none"></div>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 text-center">
+           <h2 className="heading-serif text-3xl font-bold text-white italic mb-4">
+             Securing Your Financial Future
+           </h2>
+           <p className="text-gold/60 text-sm tracking-widest uppercase font-black">
+             Direct Access to Institutional-Grade Portfolios
+           </p>
         </div>
       </section>
 
@@ -284,14 +269,11 @@ export default function WealthySection() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <p className="text-[10px] font-black text-gold uppercase tracking-[0.5em] mb-4">
-              Powered by Wealthy
-            </p>
             <h2 className="heading-serif text-4xl font-bold text-maroon sm:text-5xl mb-4">
-              Investment Products Available to You
+              Our Investment Universe
             </h2>
-            <p className="text-zinc-500 text-lg max-w-2xl mx-auto">
-              We handpick the right investment options to help you grow your wealth across every asset class.
+            <p className="text-maroon/50 text-lg max-w-2xl mx-auto">
+              We handpick premium investment options to help you grow and protect your wealth across every asset class.
             </p>
           </motion.div>
 
@@ -304,7 +286,7 @@ export default function WealthySection() {
                 whileHover={{ y: -8, boxShadow: "0 30px 60px -15px rgba(99,13,13,0.12)" }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, type: "spring", stiffness: 120 }}
-                className="relative bg-zinc-50 border border-gold/10 rounded-[2rem] p-8 group overflow-hidden cursor-default"
+                className="relative bg-maroon/[0.03] border border-gold/10 rounded-[2rem] p-8 group overflow-hidden cursor-default"
               >
                 <div className="absolute inset-0 bg-linear-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="flex items-start justify-between mb-6 relative z-10">
@@ -335,10 +317,10 @@ export default function WealthySection() {
             className="text-center mb-16"
           >
             <h2 className="heading-serif text-4xl font-bold text-white sm:text-5xl mb-4">
-              Goal-Based Investing
+              Goal-Based Planning
             </h2>
             <p className="text-gold/70 text-lg max-w-xl mx-auto">
-              Inflation will eat your savings if you don't invest wisely. We help you map your life goals to the right instruments.
+              We help you map your life goals to the right financial instruments, ensuring you stay ahead of inflation.
             </p>
           </motion.div>
 
@@ -365,11 +347,10 @@ export default function WealthySection() {
         </div>
       </section>
 
-      {/* SIP Calculator + Wealthy App Features */}
-      <section className="py-24 bg-zinc-50 overflow-hidden">
+      {/* SIP Calculator + App Features */}
+      <section className="py-24 bg-maroon/[0.03] overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Calculator */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -379,7 +360,6 @@ export default function WealthySection() {
               <SIPCalculator />
             </motion.div>
 
-            {/* Wealthy App Features */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -388,16 +368,11 @@ export default function WealthySection() {
               className="space-y-8"
             >
               <div>
-                <p className="text-[10px] font-black text-gold uppercase tracking-[0.5em] mb-3">
-                  Powered by Wealthy
-                </p>
                 <h2 className="heading-serif text-3xl font-bold text-maroon sm:text-4xl mb-4">
-                  One App for All Your Investments
+                  Unified Portfolio Management
                 </h2>
-                <p className="text-zinc-500 leading-relaxed">
-                  Your investments are managed via the{" "}
-                  <span className="font-bold text-maroon">Wealthy App</span> — a SEBI-registered,
-                  secure, and trusted investment platform used by over 1,00,000+ investors.
+                <p className="text-maroon/50 leading-relaxed text-lg">
+                  Experience seamless tracking and management of your entire family's wealth through our secure, institutional-grade platform.
                 </p>
               </div>
 
@@ -405,23 +380,23 @@ export default function WealthySection() {
                 {[
                   {
                     icon: "📱",
-                    title: "Real-time Portfolio Tracking",
-                    desc: "Monitor all your investments live, anytime.",
+                    title: "Real-time Tracking",
+                    desc: "Monitor all your investments live, anytime, anywhere.",
                   },
                   {
                     icon: "👨‍👩‍👧‍👦",
-                    title: "Add & Manage Family Portfolios",
-                    desc: "One app to manage your entire family's wealth.",
+                    title: "Family Portfolios",
+                    desc: "Consolidate and manage your entire family's wealth in one place.",
                   },
                   {
                     icon: "🔗",
-                    title: "Track External Portfolios",
-                    desc: "Import and track investments held elsewhere.",
+                    title: "External Tracking",
+                    desc: "Import and track investments held across different platforms.",
                   },
                   {
                     icon: "🔒",
-                    title: "SEBI Registered & Secure",
-                    desc: "Bank-grade security with full regulatory compliance.",
+                    title: "Bank-Grade Security",
+                    desc: "Your data and investments are protected by state-of-the-art security.",
                   },
                 ].map((feature, i) => (
                   <motion.div
@@ -430,63 +405,18 @@ export default function WealthySection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex gap-4 p-5 rounded-2xl bg-white border border-gold/10 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
+                    className="flex gap-4 p-6 rounded-2xl bg-white border border-gold/10 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
                   >
                     <span className="text-2xl shrink-0 group-hover:scale-110 transition-transform">
                       {feature.icon}
                     </span>
                     <div>
-                      <h4 className="font-bold text-maroon text-sm mb-1">{feature.title}</h4>
-                      <p className="text-zinc-500 text-xs leading-relaxed">{feature.desc}</p>
+                      <h4 className="font-bold text-maroon text-lg mb-1">{feature.title}</h4>
+                      <p className="text-maroon/50 text-sm leading-relaxed">{feature.desc}</p>
                     </div>
                   </motion.div>
                 ))}
               </div>
-
-              {/* Wealthy Platform Stats */}
-              <div>
-                <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-3">Wealthy Platform Stats</p>
-                <div className="grid grid-cols-2 gap-4">
-                  {wealthyStats.map((stat, i) => (
-                    <motion.div
-                      key={stat.label}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
-                      className="bg-maroon rounded-2xl p-5 text-center"
-                    >
-                      <p className="heading-serif text-xl font-bold text-gold mb-1">{stat.value}</p>
-                      <p className="text-white/50 text-[10px] uppercase tracking-widest">{stat.label}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              <a
-                href="https://wealthy.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-zinc-900 text-white px-6 py-4 rounded-2xl font-bold text-sm hover:bg-maroon transition-colors group"
-              >
-                <span className="text-gold font-black text-base">wealthy</span>
-                <span className="text-white/40">|</span>
-                <span>View SEBI Registration</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </a>
             </motion.div>
           </div>
         </div>

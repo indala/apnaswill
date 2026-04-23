@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import StatusRing from "@/components/StatusRing";
-import WealthySection from "@/components/WealthySection";
+import InvestmentSection from "@/components/WealthySection";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -22,9 +23,9 @@ export default function Home() {
               <motion.h1
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="heading-serif text-5xl font-bold tracking-tight text-white sm:text-7xl mb-8 leading-tight"
+                className="heading-serif text-5xl font-bold tracking-tight sm:text-7xl mb-8 leading-tight"
               >
-                APNAS <motion.span
+                <motion.span
                   animate={{
                     backgroundPosition: ["200% 0", "-200% 0"],
                   }}
@@ -33,9 +34,9 @@ export default function Home() {
                     repeat: Infinity,
                     ease: "linear"
                   }}
-                  className="bg-linear-to-r from-gold via-white to-gold bg-size-[200%_auto] bg-clip-text text-transparent"
+                  className="bg-linear-to-r from-gold via-[#e0c58e] to-gold bg-size-[200%_auto] bg-clip-text text-transparent"
                 >
-                  Will
+                  APNAS Will
                 </motion.span>
               </motion.h1>
               <motion.p
@@ -79,41 +80,15 @@ export default function Home() {
         </div>
         {/* Decorative element */}
         <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-gold opacity-10 blur-3xl"></div>
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <img src="/brochure_assets/WealthyGlobalWebIcon.jpeg" className="w-full h-full object-cover mix-blend-overlay" />
-        </div>
+
       </motion.section>
 
-      {/* Scale of Trust Stats */}
-      <section className="py-20 bg-zinc-50 border-y border-gold/10 relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { label: "Investments Executed", value: "₹6,000 Cr+", desc: "Via the Wealthy platform across India." },
-              { label: "Investors on Platform", value: "1,00,000+", desc: "Trusted by families across the country." },
-              { label: "Offices Across India", value: "20+", desc: "Nationwide presence through Wealthy network." },
-              { label: "GIFT City Access", value: "Global", desc: "Exclusive offshore investment portals via IFSC." }
-            ].map((stat, i) => (
-              <motion.div 
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-4xl font-bold text-maroon mb-2">{stat.value}</p>
-                <p className="text-sm font-black text-gold uppercase tracking-widest mb-4">{stat.label}</p>
-                <p className="text-xs text-zinc-500 max-w-[200px] mx-auto">{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Services Preview */}
       <section className="py-32 bg-white overflow-hidden relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -121,7 +96,7 @@ export default function Home() {
             className="mx-auto max-w-2xl text-center mb-24"
           >
             <h2 className="heading-serif text-4xl font-bold tracking-tight text-maroon sm:text-5xl mb-6">Our Expertise</h2>
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: 80 }}
               viewport={{ once: true }}
@@ -129,7 +104,7 @@ export default function Home() {
               className="h-1 bg-gold mx-auto"
             ></motion.div>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-3">
             {[
               {
@@ -148,33 +123,35 @@ export default function Home() {
                 icon: "🛡️"
               }
             ].map((service, i) => (
-              <motion.div 
-                key={service.title} 
+              <motion.div
+                key={service.title}
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 whileHover={{ y: -15, scale: 1.05, boxShadow: "0 25px 50px -12px rgba(212, 175, 55, 0.2)" }}
                 viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.6, 
+                transition={{
+                  duration: 0.6,
                   delay: i * 0.1,
                   type: "spring",
                   stiffness: 100
                 }}
-                className="flex flex-col items-center text-center p-12 rounded-[3.5rem] bg-zinc-50 border border-gold/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all group relative overflow-hidden"
+                className="flex flex-col items-center text-center p-12 rounded-[3.5rem] bg-maroon/[0.03] border border-gold/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-linear-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="mb-10 flex h-24 w-24 items-center justify-center rounded-3xl bg-maroon text-5xl shadow-xl group-hover:rotate-12 transition-transform relative z-10">
                   {service.icon}
                 </div>
-                <dt className="text-2xl font-bold leading-7 text-maroon mb-6 italic relative z-10">
-                  {service.title}
-                </dt>
-                <dd className="text-maroon/60 leading-relaxed mb-8 relative z-10">
-                  {service.description}
-                </dd>
+                <dl>
+                  <dt className="text-2xl font-bold leading-7 text-maroon mb-6 italic relative z-10">
+                    {service.title}
+                  </dt>
+                  <dd className="text-maroon/60 leading-relaxed mb-8 relative z-10">
+                    {service.description}
+                  </dd>
+                </dl>
                 <Link href="/services" className="relative z-10 text-maroon font-black text-sm uppercase tracking-widest hover:text-gold flex items-center gap-2 group/link transition-colors">
-                  Explore Details 
-                  <motion.span 
+                  Explore Details
+                  <motion.span
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                   >
@@ -188,63 +165,105 @@ export default function Home() {
       </section>
 
       {/* Partner Trust Ribbon */}
-      <section className="py-20 bg-zinc-50/50 border-y border-zinc-100 overflow-hidden">
+      <section className="py-20 bg-maroon/[0.02] border-y border-maroon/5 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-           <p className="text-center text-[10px] font-black text-zinc-400 uppercase tracking-[0.5em] mb-12">
-             Empowering Futures with Industry Leaders
-           </p>
-           <div className="relative flex overflow-x-hidden">
-              <motion.div 
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="flex whitespace-nowrap gap-16 items-center pr-16"
+          <p className="text-center text-[10px] font-black text-maroon/40 uppercase tracking-[0.5em] mb-12">
+            Empowering Futures with Industry Leaders
+          </p>
+          <div className="relative flex overflow-x-hidden py-8">
+            <motion.div
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="flex whitespace-nowrap gap-16 items-center pr-16"
+            >
+              {[
+                { name: "SBI Life", url: "/brochure_assets/SbiMutualFund01.png" },
+                { name: "Axis Mutual Fund", url: "/brochure_assets/AxisMutualFund01.png" },
+                { name: "HDFC Life", url: "/brochure_assets/HdfcLife.png" },
+                { name: "ICICI Prudential", url: "/brochure_assets/IciciPrudentialLifeInsurance.jpeg" },
+                { name: "Tata AIA", url: "/brochure_assets/TataAiaLifeInsurance.jpeg" },
+                { name: "Care Health", url: "/brochure_assets/CareHealthInsurance.png" },
+                { name: "NSE", url: "/brochure_assets/Nse.png" },
+                { name: "Zepto", url: "/brochure_assets/Zepto.png" }
+              ].map((partner) => (
+                <motion.div
+                  key={partner.name}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  className="flex items-center gap-4 opacity-70 hover:opacity-100 transition-all cursor-crosshair px-4"
+                >
+                  <div className="relative h-10 w-28">
+                    <Image
+                      src={partner.url}
+                      alt={partner.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="heading-serif text-lg font-bold text-maroon/60">{partner.name}</span>
+                </motion.div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                { name: "SBI Life", url: "/brochure_assets/SbiMutualFund01.png" },
+                { name: "Axis Mutual Fund", url: "/brochure_assets/AxisMutualFund01.png" },
+                { name: "HDFC Life", url: "/brochure_assets/HdfcLife.png" },
+                { name: "ICICI Prudential", url: "/brochure_assets/IciciPrudentialLifeInsurance.jpeg" },
+                { name: "Tata AIA", url: "/brochure_assets/TataAiaLifeInsurance.jpeg" },
+                { name: "Care Health", url: "/brochure_assets/CareHealthInsurance.png" },
+                { name: "NSE", url: "/brochure_assets/Nse.png" },
+                { name: "Zepto", url: "/brochure_assets/Zepto.png" }
+              ].map((partner) => (
+                <motion.div
+                  key={partner.name + '-dup'}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  className="flex items-center gap-4 opacity-70 hover:opacity-100 transition-all cursor-crosshair px-4"
+                >
+                  <div className="relative h-10 w-28">
+                    <Image
+                      src={partner.url}
+                      alt={partner.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="heading-serif text-lg font-bold text-maroon/60">{partner.name}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            {[
+              { label: "Families Served", value: "500+", sub: "Trusted Partners" },
+              { label: "Expertise", value: "15+", sub: "Years of Trust" },
+              { label: "Financial Products", value: "100+", sub: "Curated Portfolio" },
+              { label: "Client Retention", value: "98%", sub: "Long-term Relations" }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex flex-col items-center group"
               >
-                {[
-                  { name: "SBI Life", url: "/brochure_assets/SbiMutualFund01.png" },
-                  { name: "Axis Mutual Fund", url: "/brochure_assets/AxisMutualFund01.png" },
-                  { name: "HDFC Life", url: "/brochure_assets/HdfcLife.png" },
-                  { name: "ICICI Prudential", url: "/brochure_assets/IciciPrudentialLifeInsurance.jpeg" },
-                  { name: "Tata AIA", url: "/brochure_assets/TataAiaLifeInsurance.jpeg" },
-                  { name: "Care Health", url: "/brochure_assets/CareHealthInsurance.png" },
-                  { name: "NSE", url: "/brochure_assets/Nse.png" },
-                  { name: "Zepto", url: "/brochure_assets/Zepto.png" }
-                ].map((partner) => (
-                  <motion.div 
-                    key={partner.name} 
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="flex items-center gap-4 opacity-70 hover:opacity-100 transition-all cursor-crosshair px-4"
-                  >
-                     <img src={partner.url} alt={partner.name} className="h-10 object-contain" />
-                     <span className="heading-serif text-lg font-bold text-maroon/60">{partner.name}</span>
-                  </motion.div>
-                ))}
-                {/* Duplicate for seamless loop */}
-                {[
-                  { name: "SBI Life", url: "/brochure_assets/SbiMutualFund01.png" },
-                  { name: "Axis Mutual Fund", url: "/brochure_assets/AxisMutualFund01.png" },
-                  { name: "HDFC Life", url: "/brochure_assets/HdfcLife.png" },
-                  { name: "ICICI Prudential", url: "/brochure_assets/IciciPrudentialLifeInsurance.jpeg" },
-                  { name: "Tata AIA", url: "/brochure_assets/TataAiaLifeInsurance.jpeg" },
-                  { name: "Care Health", url: "/brochure_assets/CareHealthInsurance.png" },
-                  { name: "NSE", url: "/brochure_assets/Nse.png" },
-                  { name: "Zepto", url: "/brochure_assets/Zepto.png" }
-                ].map((partner) => (
-                  <motion.div 
-                    key={partner.name + '-dup'} 
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="flex items-center gap-4 opacity-70 hover:opacity-100 transition-all cursor-crosshair px-4"
-                  >
-                     <img src={partner.url} alt={partner.name} className="h-10 object-contain" />
-                     <span className="heading-serif text-lg font-bold text-maroon/60">{partner.name}</span>
-                  </motion.div>
-                ))}
+                <div className="h-0.5 w-8 bg-gold mb-6 group-hover:w-16 transition-all duration-500"></div>
+                <span className="heading-serif text-5xl font-bold text-maroon mb-2">{stat.value}</span>
+                <span className="text-maroon font-black text-xs uppercase tracking-[0.3em] mb-1">{stat.label}</span>
+                <span className="text-maroon/40 text-[10px] uppercase tracking-widest">{stat.sub}</span>
               </motion.div>
-           </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-zinc-50 overflow-hidden relative">
+      <section className="py-24 bg-maroon/[0.03] overflow-hidden relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -291,7 +310,7 @@ export default function Home() {
               <div className="aspect-4/3 rounded-[3rem] bg-maroon/10 border-2 border-gold/20 flex items-center justify-center p-12 text-center overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 maroon-gradient opacity-10"></div>
                 <div className="relative z-10">
-                  <motion.div 
+                  <motion.div
                     initial={{ scale: 0.9 }}
                     whileInView={{ scale: 1 }}
                     transition={{ type: "spring", bounce: 0.5 }}
@@ -309,8 +328,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wealthy Platform Section */}
-      <WealthySection />
+      {/* Investment Options Section */}
+      <InvestmentSection />
+
+      {/* FAQ Section */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="mx-auto max-w-4xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="heading-serif text-4xl font-bold text-maroon mb-6">Frequently Asked Questions</h2>
+            <div className="h-1 w-12 bg-gold mx-auto"></div>
+          </motion.div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "What makes APNAS Will different from other consultants?",
+                a: "We provide institutional-grade advice with a deeply personalized touch. Unlike generic platforms, we focus on long-term family legacies and offer exclusive access to premium products like GIFT City offshore funds."
+              },
+              {
+                q: "Is my financial data secure with you?",
+                a: "Security is our top priority. We use bank-grade encryption and partner with India's most trusted institutions like SBI, HDFC, and ICICI to ensure your assets and data are always protected."
+              },
+              {
+                q: "Do you offer international investment options?",
+                a: "Yes, through our strategic GIFT City (IFSC) access, we provide our clients with opportunities to invest in global offshore funds and emerging market portfolios."
+              },
+              {
+                q: "How do I get started with a personalized roadmap?",
+                a: "Simply click the 'Book Free Consultation' button. We'll schedule a discovery session to understand your goals and design a tailored financial roadmap for your family."
+              }
+            ].map((faq, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="rounded-[2rem] bg-maroon/[0.03] p-8 border border-gold/5"
+              >
+                <h4 className="text-lg font-bold text-maroon mb-4">{faq.q}</h4>
+                <p className="text-maroon/60 leading-relaxed">{faq.a}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <motion.section

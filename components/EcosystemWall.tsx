@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const partners = [
@@ -79,11 +80,12 @@ export default function EcosystemWall() {
               transition={{ delay: i * 0.05 }}
               className="flex flex-col items-center justify-center p-8 rounded-3xl bg-zinc-50 border border-gold/5 transition-all group cursor-pointer"
             >
-              <div className="h-12 w-full flex items-center justify-center mb-4">
-                <img 
+              <div className="relative h-12 w-full mb-4">
+                <Image 
                   src={partner.url} 
                   alt={partner.name} 
-                  className="max-h-full max-w-full object-contain transition-all duration-500" 
+                  fill
+                  className="object-contain transition-all duration-500" 
                 />
               </div>
               <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest text-center group-hover:text-maroon transition-colors">

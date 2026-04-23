@@ -166,12 +166,14 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">Full Name</label>
+                    <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">
+                      Full Name <span className="text-red-500">*</span>
+                    </label>
                     <motion.input
                       whileFocus={{ scale: 1.01, borderColor: "rgba(184, 134, 11, 0.5)" }}
                       type="text"
                       required
-                      className={`w-full bg-white border-2 ${errors.name ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 focus:outline-none shadow-sm transition-all`}
+                      className={`w-full bg-white border-2 ${errors.name ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 text-maroon font-medium focus:outline-none shadow-sm transition-all`}
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -179,12 +181,14 @@ export default function Contact() {
                     {errors.name && <span className="text-red-500 text-[10px] font-bold uppercase tracking-tighter block mt-1">{errors.name}</span>}
                   </div>
                   <div className="space-y-2">
-                    <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">Phone Number</label>
+                    <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">
+                      Phone Number <span className="text-red-500">*</span>
+                    </label>
                     <motion.input
                       whileFocus={{ scale: 1.01, borderColor: "rgba(184, 134, 11, 0.5)" }}
                       type="tel"
                       required
-                      className={`w-full bg-white border-2 ${errors.phone ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 focus:outline-none shadow-sm transition-all`}
+                      className={`w-full bg-white border-2 ${errors.phone ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 text-maroon font-medium focus:outline-none shadow-sm transition-all`}
                       placeholder="+91 00000 00000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -193,12 +197,11 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">Email Address</label>
+                  <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">Email Address (Optional)</label>
                   <motion.input
                     whileFocus={{ scale: 1.01, borderColor: "rgba(184, 134, 11, 0.5)" }}
                     type="email"
-                    required
-                    className={`w-full bg-white border-2 ${errors.email ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 focus:outline-none shadow-sm transition-all`}
+                    className={`w-full bg-white border-2 ${errors.email ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 text-maroon font-medium focus:outline-none shadow-sm transition-all`}
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -208,7 +211,8 @@ export default function Contact() {
                 <div className="space-y-2">
                   <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">Subject</label>
                   <select
-                    className="w-full bg-white border-2 border-zinc-100 rounded-2xl px-6 py-4 focus:outline-none shadow-sm"
+                    title="Inquiry Subject"
+                    className="w-full bg-white border-2 border-zinc-100 rounded-2xl px-6 py-4 text-maroon font-medium focus:outline-none shadow-sm"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   >
@@ -220,12 +224,14 @@ export default function Contact() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">Your Message</label>
+                  <label className="block text-xs font-bold text-maroon/60 uppercase tracking-widest ml-1">
+                    Your Message <span className="text-red-500">*</span>
+                  </label>
                   <motion.textarea
                     whileFocus={{ scale: 1.01, borderColor: "rgba(184, 134, 11, 0.5)" }}
                     rows={4}
                     required
-                    className={`w-full bg-white border-2 ${errors.message ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 focus:outline-none shadow-sm transition-all`}
+                    className={`w-full bg-white border-2 ${errors.message ? 'border-red-500' : 'border-zinc-100'} rounded-2xl px-6 py-4 text-maroon font-medium focus:outline-none shadow-sm transition-all`}
                     placeholder="Tell us how we can help..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -264,6 +270,43 @@ export default function Contact() {
                 </AnimatePresence>
               </form>
             </motion.div>
+          </div>
+        </div>
+      </section>
+      {/* What Happens Next */}
+      <section className="py-24 bg-zinc-50 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="heading-serif text-3xl font-bold text-maroon mb-6">Your Path to Clarity</h2>
+            <p className="text-maroon/50 text-lg">Transparent steps from your first inquiry to a secure legacy.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              { title: "Initial Inquiry", desc: "You submit your details and focus area via this form or WhatsApp." },
+              { title: "Expert Match", desc: "A specialist in your specific area (Wealth, Insurance, or Estate) reaches out." },
+              { title: "Discovery Session", desc: "A complimentary session to understand your family's unique landscape." },
+              { title: "Strategic Plan", desc: "Receive a bespoke roadmap using institutional-grade instruments." }
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white p-8 rounded-3xl shadow-sm border border-gold/10 relative"
+              >
+                <span className="h-8 w-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-sm mb-6">{i + 1}</span>
+                <h4 className="text-lg font-bold text-maroon mb-4">{step.title}</h4>
+                <p className="text-maroon/50 text-sm leading-relaxed">{step.desc}</p>
+                {i < 3 && <div className="hidden lg:block absolute top-1/2 -right-4 translate-y-[-50%] text-gold opacity-30 text-2xl">→</div>}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

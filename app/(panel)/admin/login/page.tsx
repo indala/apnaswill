@@ -39,16 +39,18 @@ export default function AdminLogin() {
             </svg>
           </div>
           <h1 className="heading-serif text-3xl font-bold text-maroon">Admin Portal</h1>
-          <p className="text-gray-500 mt-2">Please enter your secure access key</p>
+          <p className="text-maroon/60 mt-2">Please enter your secure access key</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <input
               type="password"
+              title="Admin Access Key"
+              aria-label="Admin Access Key"
               placeholder="••••••••"
               required
-              className="w-full border-2 border-gray-100 rounded-xl px-4 py-4 text-center text-xl tracking-widest focus:border-gold focus:outline-none transition-all"
+              className="w-full border-2 border-gray-100 rounded-xl px-4 py-4 text-center text-xl tracking-widest text-maroon font-bold focus:border-gold focus:outline-none transition-all placeholder:text-gray-300"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -67,7 +69,7 @@ export default function AdminLogin() {
           </button>
         </form>
         
-        <p className="text-xs text-gray-400 mt-10 uppercase tracking-widest">Authorized Access Only</p>
+        <p className="text-xs text-maroon/40 mt-10 uppercase tracking-widest">Authorized Access Only</p>
       </div>
     </div>
   );

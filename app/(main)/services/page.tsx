@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import EcosystemWall from "@/components/EcosystemWall";
@@ -14,10 +15,10 @@ export default function Services() {
         "Mutual Funds & SIFs (Goal-based)",
         "Portfolio Management (PMS)",
         "Alternative Investments (AIF)",
-        "Wealthcase Baskets (SEBI Curated)",
-        "Strategic SIP Orchestration"
+        "Institutional Investment Baskets",
+        "Strategic SIP Management"
       ],
-      description: "Harness the power of professional portfolio management and curated investment baskets to grow your wealth across market cycles."
+      description: "Harness the power of professional portfolio management and curated investment strategies to grow your wealth across market cycles."
     },
     {
       id: "insurance-health",
@@ -56,7 +57,7 @@ export default function Services() {
         "Global Emerging Allocation",
         "Min. Investment: $150,000 USD"
       ],
-      description: "Access global investment opportunities and tax-efficient offshore structures through GIFT City (IFSC) via the Wealthy platform."
+      description: "Access global investment opportunities and tax-efficient offshore structures through GIFT City (IFSC)."
     },
     {
       id: "equity",
@@ -78,7 +79,7 @@ export default function Services() {
       items: [
         "Retirement Corpus Building",
         "Child Education & Legacy Planning",
-        "Pension & Annuity Orchestration",
+        "Pension & Annuity Planning",
         "Estate Planning & Will Creation",
         "Wealth Transfer Strategies"
       ],
@@ -93,29 +94,25 @@ export default function Services() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="bg-maroon py-24 text-center relative overflow-hidden"
+        className="bg-maroon py-32 text-center relative overflow-hidden"
       >
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gold/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gold/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gold/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
+        
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <motion.h1 
-            initial={{ y: -30, opacity: 0 }}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="heading-serif text-5xl font-bold tracking-tight text-white sm:text-6xl"
           >
-            Our Services
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="text-gold/80 mt-6 text-xl max-w-2xl mx-auto"
-          >
-            Institutional-grade financial planning and wealth management, powered by India's leading partners.
-          </motion.p>
-        </div>
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img src="/brochure_assets/WealthyGlobalWebIcon.jpeg" className="w-full h-full object-cover mix-blend-overlay" />
+            <h1 className="heading-serif text-5xl font-bold tracking-tight text-white sm:text-7xl mb-8">
+              Our Expertise
+            </h1>
+            <div className="h-1.5 w-24 bg-gold mx-auto rounded-full mb-8"></div>
+            <p className="text-gold/80 text-xl max-w-2xl mx-auto font-light leading-relaxed">
+              Institutional-grade financial planning and wealth management, planned with precision and trust.
+            </p>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -154,20 +151,21 @@ export default function Services() {
                   </motion.p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {service.items.map((item, i) => (
-                      <motion.li 
-                        key={i} 
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        whileHover={{ scale: 1.05, borderColor: "rgba(184, 134, 11, 0.4)" }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.6 + (i * 0.05) }}
-                        className="flex items-center gap-3 text-zinc-700 bg-zinc-50/80 p-5 rounded-2xl border border-gold/5 shadow-sm transition-all cursor-default"
-                      >
-                        <svg className="h-5 w-5 text-gold shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-sm font-medium">{item}</span>
-                      </motion.li>
+                      <li key={i}>
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          whileHover={{ scale: 1.05, borderColor: "rgba(184, 134, 11, 0.4)" }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.6 + (i * 0.05) }}
+                          className="flex items-center gap-3 text-maroon/80 bg-maroon/[0.03] p-5 rounded-2xl border border-gold/5 shadow-sm transition-all cursor-default"
+                        >
+                          <svg className="h-5 w-5 text-gold shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span className="text-sm font-medium">{item}</span>
+                        </motion.div>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -195,8 +193,49 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Strategy Discovery Tool */}
+      <section className="py-32 bg-maroon relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        </div>
+        
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <h2 className="heading-serif text-4xl font-bold text-white mb-6">Find Your Strategic Roadmap</h2>
+            <p className="text-gold/70 text-xl max-w-2xl mx-auto">Select your primary focus area to see our recommended expertise.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { id: 'growth', label: 'Aggressive Growth', icon: '🚀', rec: 'Equity & Pre-IPO Access' },
+              { id: 'income', label: 'Steady Income', icon: '💰', rec: 'Fixed Income & Bond Laddering' },
+              { id: 'safety', label: 'Family Safety', icon: '🛡️', rec: 'Health & Life Protection' },
+              { id: 'offshore', label: 'Global Diversification', icon: '🌐', rec: 'GIFT City Offshore Investments' }
+            ].map((choice) => (
+              <motion.button
+                key={choice.id}
+                whileHover={{ y: -10, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white/5 border border-white/10 p-10 rounded-[3rem] group hover:bg-gold hover:border-gold transition-all"
+              >
+                <span className="text-6xl mb-6 block group-hover:scale-125 transition-transform">{choice.icon}</span>
+                <h4 className="text-xl font-bold text-white group-hover:text-maroon mb-2">{choice.label}</h4>
+                <div className="h-0.5 w-8 bg-gold mx-auto mb-6 group-hover:bg-maroon/20"></div>
+                <p className="text-gold/50 text-xs font-bold uppercase tracking-widest group-hover:text-maroon/60">Recommendation:</p>
+                <p className="text-white font-medium mt-1 group-hover:text-maroon">{choice.rec}</p>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Portfolio Section */}
-      <section className="py-32 bg-zinc-50 overflow-hidden">
+      <section className="py-32 bg-maroon/[0.03] overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -220,7 +259,7 @@ export default function Services() {
               },
               {
                 category: "Offshore & High-Net",
-                products: ["WhiteOak Capital Global", "Mirae Asset India (IFSC)", "Alchemy India Trust", "Wealthcase Baskets", "Pre-IPO (NSE/Zepto)", "Alternative Assets"]
+                products: ["WhiteOak Capital Global", "Mirae Asset India (IFSC)", "Alchemy India Trust", "Institutional Baskets", "Pre-IPO (NSE/Zepto)", "Alternative Assets"]
               }
             ].map((group, i) => (
               <motion.div 
@@ -251,7 +290,7 @@ export default function Services() {
       {/* Institutional Network Wall */}
       <EcosystemWall />
 
-      <section className="py-24 bg-zinc-50 relative overflow-hidden">
+      <section className="py-24 bg-maroon/[0.03] relative overflow-hidden">
         <div className="absolute inset-0 bg-maroon/3"></div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10">
           <motion.h3 
@@ -280,8 +319,13 @@ export default function Services() {
                 transition={{ delay: i * 0.1 }}
                 className="flex flex-col items-center gap-3 transition-all cursor-default"
                >
-                 <div className="bg-white rounded-2xl p-4 shadow-sm border border-gold/10 w-full flex items-center justify-center h-16">
-                   <img src={partner.url} alt={partner.name} className="h-10 object-contain" />
+                 <div className="bg-white rounded-2xl p-4 shadow-sm border border-gold/10 w-full flex items-center justify-center h-16 relative">
+                   <Image 
+                    src={partner.url} 
+                    alt={partner.name} 
+                    fill
+                    className="object-contain p-4" 
+                   />
                  </div>
                  <span className="text-[9px] font-bold text-maroon/50 uppercase tracking-widest">{partner.name}</span>
                </motion.div>

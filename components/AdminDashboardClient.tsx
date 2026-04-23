@@ -89,16 +89,16 @@ export default function AdminDashboardClient() {
   };
 
   return (
-    <div className="py-20 bg-zinc-50 min-h-screen">
+    <div className="py-20 bg-maroon/[0.02] min-h-screen">
       <div className="mx-auto max-w-5xl px-6">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex justify-between items-end mb-16 border-b border-zinc-200 pb-10"
+          className="flex justify-between items-end mb-16 border-b border-maroon/10 pb-10"
         >
           <div>
             <h1 className="heading-serif text-5xl font-bold text-maroon">Admin Panel</h1>
-            <p className="text-zinc-400 mt-2 font-medium tracking-tight">Real-time status management & orchestration</p>
+            <p className="text-maroon/40 mt-2 font-medium tracking-tight uppercase text-[10px] tracking-[0.2em]">Institutional Content Management</p>
           </div>
           <motion.button 
             whileHover={{ scale: 1.05 }}
@@ -139,16 +139,18 @@ export default function AdminDashboardClient() {
           <form onSubmit={addStatus} className="space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-4">
-                <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest ml-1">Visual Content</label>
+                <label className="block text-xs font-bold text-maroon/40 uppercase tracking-widest ml-1">Visual Asset</label>
                 <div className="relative group">
                   <motion.div 
                     whileHover={{ borderColor: "rgba(184, 134, 11, 0.4)" }}
-                    className="relative border-3 border-dashed border-zinc-100 rounded-4xl px-8 py-12 text-center bg-zinc-50/50 transition-all cursor-pointer overflow-hidden"
+                    className="relative border-3 border-dashed border-maroon/10 rounded-4xl px-8 py-12 text-center bg-white transition-all cursor-pointer overflow-hidden group-hover:border-gold/40"
                   >
                     <input
                       type="file"
                       accept="image/*,video/*,application/pdf"
                       className="absolute inset-0 opacity-0 cursor-pointer z-10"
+                      title="Upload Visual Asset"
+                      aria-label="Upload Visual Asset"
                       onChange={(e) => setFile(e.target.files?.[0] || null)}
                     />
                     <div className="space-y-4">
@@ -157,27 +159,30 @@ export default function AdminDashboardClient() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                           </svg>
                        </div>
-                       <p className="text-zinc-500 font-bold text-sm">{file ? file.name : "Click to select or drag & drop"}</p>
-                       <p className="text-[10px] text-zinc-300 uppercase tracking-widest font-black">Images, Videos, PDF (Max 50MB)</p>
+                        <p className="text-maroon/60 font-bold text-sm">{file ? file.name : "Upload Asset or Drag & Drop"}</p>
+                        <p className="text-[10px] text-maroon/30 uppercase tracking-widest font-black">Images, Videos, PDF (Max 50MB)</p>
                     </div>
                   </motion.div>
                 </div>
               </div>
               <div className="space-y-4">
-                <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest ml-1">Lifecycle Duration (Days)</label>
+                <label className="block text-xs font-bold text-maroon/40 uppercase tracking-widest ml-1">Display Duration (Days)</label>
                 <motion.input
                   whileFocus={{ borderColor: "rgba(184, 134, 11, 0.4)" }}
                   type="number"
                   min="1"
                   max="30"
-                  className="w-full border-2 border-zinc-100 rounded-3xl px-8 py-6 focus:outline-none transition-all font-bold text-2xl text-maroon shadow-sm"
+                  className="w-full border-2 border-maroon/5 rounded-3xl px-8 py-6 focus:outline-none focus:border-gold/30 transition-all font-bold text-2xl text-maroon shadow-sm bg-white"
+                  title="Display Duration in Days"
+                  aria-label="Display Duration in Days"
+                  placeholder="1"
                   value={expiryDays || ""}
                   onChange={(e) => {
                     const val = e.target.value;
                     setExpiryDays(val === "" ? 0 : parseInt(val));
                   }}
                 />
-                <p className="text-xs text-zinc-400 italic flex items-center gap-2">
+                <p className="text-xs text-maroon/30 italic flex items-center gap-2">
                    <span className="h-1 w-1 rounded-full bg-gold"></span>
                    Auto-expires after {expiryDays} day{expiryDays !== 1 ? 's' : ''}
                 </p>
@@ -190,7 +195,7 @@ export default function AdminDashboardClient() {
               disabled={uploading}
               className="w-full bg-maroon text-white font-black py-6 rounded-4xl shadow-[0_20px_40px_-10px_rgba(128,0,0,0.3)] hover:bg-maroon/90 transition-all disabled:opacity-50 text-xl tracking-tight"
             >
-              {uploading ? "Broadcasting..." : "Deploy New Status"}
+               {uploading ? "Broadcasting..." : "Publish Insight"}
             </motion.button>
           </form>
         </motion.div>
@@ -206,7 +211,7 @@ export default function AdminDashboardClient() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border border-zinc-100 group relative"
+                className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border border-maroon/5 group relative"
               >
                 <div className="aspect-9/16 relative bg-zinc-100">
                   {getMediaKind(status.image_url) === "image" && (
@@ -248,7 +253,7 @@ export default function AdminDashboardClient() {
                       onClick={() => deleteStatus(status.id)}
                       className="w-full bg-white text-maroon py-4 rounded-2xl font-black shadow-2xl hover:bg-red-50 transition-all text-sm uppercase tracking-widest"
                     >
-                      Purge Status
+                      Remove Content
                     </motion.button>
                   </div>
                 </div>
@@ -256,7 +261,7 @@ export default function AdminDashboardClient() {
                   <span className="text-[10px] font-black text-gold uppercase tracking-[0.3em]">
                     {status.expiry_days}d Lifecycle
                   </span>
-                  <span className="text-[10px] font-bold text-zinc-300 uppercase">
+                  <span className="text-[10px] font-bold text-maroon/20 uppercase">
                     {new Date(status.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
                   </span>
                 </div>
