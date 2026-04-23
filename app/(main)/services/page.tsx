@@ -94,7 +94,7 @@ export default function Services() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="bg-maroon py-32 text-center relative overflow-hidden"
+        className="bg-maroon py-16 sm:py-32 text-center relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-96 h-96 bg-gold/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-64 h-64 bg-gold/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
@@ -105,7 +105,7 @@ export default function Services() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <h1 className="heading-serif text-5xl font-bold tracking-tight text-white sm:text-7xl mb-8">
+            <h1 className="heading-serif text-4xl font-bold tracking-tight text-white sm:text-7xl mb-8">
               Our Expertise
             </h1>
             <div className="h-1.5 w-24 bg-gold mx-auto rounded-full mb-8"></div>
@@ -117,9 +117,9 @@ export default function Services() {
       </motion.section>
 
       {/* Services Detail */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-16 sm:py-24 bg-white overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="space-y-40">
+          <div className="space-y-24 sm:space-y-40">
             {services.map((service, index) => (
               <motion.div 
                 key={service.id} 
@@ -127,7 +127,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, x: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-                className={`flex flex-col lg:flex-row gap-20 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                className={`flex flex-col lg:flex-row gap-12 sm:gap-20 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
               >
                 <div className="flex-1 space-y-10">
                   <motion.div 
@@ -138,7 +138,7 @@ export default function Services() {
                     className="flex items-center gap-6"
                   >
                     <span className="text-6xl drop-shadow-lg">{service.icon}</span>
-                    <h2 className="heading-serif text-4xl font-bold text-maroon">{service.title}</h2>
+                    <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-maroon">{service.title}</h2>
                   </motion.div>
                   <motion.p 
                     initial={{ y: 20, opacity: 0 }}
@@ -176,7 +176,7 @@ export default function Services() {
                   transition={{ duration: 1 }}
                   className="flex-1 w-full max-w-md"
                 >
-                   <div className="aspect-square rounded-[3rem] bg-zinc-50 border-4 border-gold/10 flex items-center justify-center relative group overflow-hidden shadow-2xl">
+                   <div className="aspect-square rounded-[2rem] sm:rounded-[3rem] bg-zinc-50 border-4 border-gold/10 flex items-center justify-center relative group overflow-hidden shadow-2xl">
                       <div className="absolute inset-10 border-2 border-maroon/10 rounded-3xl group-hover:scale-110 transition-transform duration-700"></div>
                       <motion.span 
                         animate={{ y: [0, -10, 0] }}
@@ -194,7 +194,7 @@ export default function Services() {
       </section>
 
       {/* Strategy Discovery Tool */}
-      <section className="py-32 bg-maroon relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-maroon relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
           <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         </div>
@@ -206,7 +206,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="heading-serif text-4xl font-bold text-white mb-6">Find Your Strategic Roadmap</h2>
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-white mb-6">Find Your Strategic Roadmap</h2>
             <p className="text-gold/70 text-xl max-w-2xl mx-auto">Select your primary focus area to see our recommended expertise.</p>
           </motion.div>
 
@@ -221,7 +221,7 @@ export default function Services() {
                 key={choice.id}
                 whileHover={{ y: -10, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white/5 border border-white/10 p-10 rounded-[3rem] group hover:bg-gold hover:border-gold transition-all"
+                className="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-[2.5rem] sm:rounded-[3rem] group hover:bg-gold hover:border-gold transition-all"
               >
                 <span className="text-6xl mb-6 block group-hover:scale-125 transition-transform">{choice.icon}</span>
                 <h4 className="text-xl font-bold text-white group-hover:text-maroon mb-2">{choice.label}</h4>
@@ -235,7 +235,7 @@ export default function Services() {
       </section>
 
       {/* Featured Portfolio Section */}
-      <section className="py-32 bg-maroon/[0.03] overflow-hidden">
+      <section className="py-16 sm:py-32 bg-maroon/[0.03] overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -243,7 +243,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="heading-serif text-4xl font-bold text-maroon mb-6">Featured Portfolio</h2>
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-maroon mb-6">Featured Portfolio</h2>
             <p className="text-maroon/50 text-lg max-w-2xl mx-auto">Explore our curated selection of top-tier financial instruments from India's leading institutions.</p>
           </motion.div>
 
@@ -269,7 +269,7 @@ export default function Services() {
                 whileHover={{ scale: 1.05, boxShadow: "0 30px 60px -15px rgba(184, 134, 11, 0.15)" }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
-                className="bg-white p-10 rounded-[3rem] shadow-xl border border-gold/5 group relative overflow-hidden"
+                className="bg-white p-8 sm:p-10 rounded-[2.5rem] sm:rounded-[3rem] shadow-xl border border-gold/5 group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-linear-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <h3 className="text-sm font-black text-gold uppercase tracking-[0.3em] mb-8 relative z-10">{group.category}</h3>
@@ -339,14 +339,14 @@ export default function Services() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="py-32 bg-white text-center"
+        className="py-16 sm:py-32 bg-white text-center"
       >
         <div className="mx-auto max-w-3xl px-6">
           <motion.h2 
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            className="heading-serif text-4xl font-bold text-maroon mb-8"
+            className="heading-serif text-3xl sm:text-4xl font-bold text-maroon mb-8"
           >
             Ready for a tailored financial roadmap?
           </motion.h2>

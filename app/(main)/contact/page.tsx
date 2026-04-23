@@ -58,14 +58,14 @@ export default function Contact() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="bg-maroon py-24 text-center relative overflow-hidden"
+        className="bg-maroon py-16 sm:py-24 text-center relative overflow-hidden"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
           <motion.h1
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="heading-serif text-5xl font-bold tracking-tight text-white sm:text-6xl"
+            className="heading-serif text-4xl sm:text-6xl font-bold tracking-tight text-white"
           >
             Contact Us
           </motion.h1>
@@ -90,7 +90,7 @@ export default function Contact() {
         </div>
       </motion.section>
 
-      <section className="py-24 bg-white relative">
+      <section className="py-16 sm:py-24 bg-white relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
             {/* Contact Info */}
@@ -102,7 +102,7 @@ export default function Contact() {
               className="space-y-12"
             >
               <div>
-                <h2 className="heading-serif text-4xl font-bold text-maroon mb-8">Get In Touch</h2>
+                <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-maroon mb-8">Get In Touch</h2>
                 <p className="text-maroon/60 text-lg leading-relaxed mb-10 max-w-md">
                   Whether you're starting your wealth journey or looking to protect your family, our team is ready to provide personalized solutions.
                 </p>
@@ -144,7 +144,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gold uppercase tracking-[0.3em] mb-2">{item.label}</p>
-                      <a href={item.label.includes("Email") ? `mailto:${item.val}` : `tel:${item.val.replace(/ /g, '')}`} className="text-2xl font-bold text-maroon hover:text-gold transition-colors block mb-1">
+                      <a href={item.label.includes("Email") ? `mailto:${item.val}` : `tel:${item.val.replace(/ /g, '')}`} className="text-xl sm:text-2xl font-bold text-maroon hover:text-gold transition-colors block mb-1 break-all">
                         {item.val}
                       </a>
                       <p className="text-sm text-maroon/40 italic">{item.sub}</p>
@@ -160,9 +160,9 @@ export default function Contact() {
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-zinc-50/50 p-12 rounded-[3rem] border border-gold/10 shadow-2xl relative"
+              className="bg-zinc-50/50 p-6 sm:p-12 rounded-[2.5rem] sm:rounded-[3rem] border border-gold/10 shadow-2xl relative"
             >
-              <h3 className="heading-serif text-3xl font-bold text-maroon mb-10">Enquiry Form</h3>
+              <h3 className="heading-serif text-2xl sm:text-3xl font-bold text-maroon mb-10">Enquiry Form</h3>
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <div className="space-y-2">
@@ -274,7 +274,7 @@ export default function Contact() {
         </div>
       </section>
       {/* What Happens Next */}
-      <section className="py-24 bg-zinc-50 overflow-hidden">
+      <section className="py-16 sm:py-24 bg-zinc-50 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

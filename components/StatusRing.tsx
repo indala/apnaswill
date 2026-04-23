@@ -109,9 +109,9 @@ export default function StatusRing() {
         whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="group relative h-64 w-64 rounded-[3rem] p-1 bg-linear-to-tr from-gold/30 via-maroon to-gold/30 transition-all shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]"
+        className="group relative h-48 w-48 sm:h-64 sm:w-64 rounded-[2.5rem] sm:rounded-[3rem] p-1 bg-linear-to-tr from-gold/30 via-maroon to-gold/30 transition-all shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]"
       >
-        <div className="h-full w-full rounded-[2.8rem] border-4 border-maroon bg-zinc-900 overflow-hidden relative">
+        <div className="h-full w-full rounded-[2.3rem] sm:rounded-[2.8rem] border-4 border-maroon bg-zinc-900 overflow-hidden relative">
           {getMediaKind(statuses[0].image_url) === "image" && (
             <motion.img
               src={statuses[0].image_url}
@@ -170,14 +170,14 @@ export default function StatusRing() {
               animate={{ scale: 1 }}
               whileHover={{ scale: 1.1, rotate: 90 }}
               onClick={() => setIsOpen(false)}
-              className="absolute top-10 right-10 z-50 text-white/40 hover:text-gold transition-colors"
+              className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 text-white/40 hover:text-gold transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </motion.button>
             
-            <div className="relative max-w-2xl w-full px-6 flex flex-col h-full py-16 justify-center">
+            <div className="relative max-w-2xl w-full px-4 sm:px-6 flex flex-col h-full py-12 sm:py-16 justify-center">
               {/* Progress Tracker */}
               <div className="flex gap-2 mb-6">
                 {statuses.map((_, i) => (
@@ -246,14 +246,14 @@ export default function StatusRing() {
                 </div>
 
                 {/* Arrow Hints */}
-                <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-20 opacity-0 group-hover:opacity-100 transition-opacity">
-                   <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 text-white shadow-2xl">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
+                <div className="absolute inset-x-4 sm:inset-x-8 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                   <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 text-white shadow-2xl">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                       </svg>
                    </div>
-                   <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 text-white shadow-2xl">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
+                   <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 text-white shadow-2xl">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                       </svg>
                    </div>

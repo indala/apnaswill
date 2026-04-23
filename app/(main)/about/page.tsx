@@ -22,7 +22,7 @@ export default function About() {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="heading-serif text-5xl font-bold tracking-tight text-white sm:text-7xl"
+            className="heading-serif text-4xl font-bold tracking-tight text-white sm:text-7xl"
           >
             Our Story
           </motion.h1>
@@ -47,7 +47,7 @@ export default function About() {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="heading-serif text-5xl font-bold text-maroon mb-4"
+                  className="heading-serif text-4xl font-bold text-maroon mb-4"
                 >
                   Aswini Prasad
                 </motion.h2>
@@ -113,7 +113,7 @@ export default function About() {
               transition={{ duration: 1 }}
               className="relative"
             >
-              <div className="aspect-[3/4] rounded-[4rem] bg-maroon overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] relative border-[16px] border-maroon/[0.03] group">
+              <div className="aspect-[3/4] rounded-[2.5rem] sm:rounded-[4rem] bg-maroon overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] relative border-[8px] sm:border-[16px] border-maroon/[0.03] group">
                 <div className="absolute inset-0 flex items-center justify-center text-white/5 text-[15rem] font-bold heading-serif italic select-none group-hover:scale-110 transition-transform duration-1000">
                   AP
                 </div>
@@ -133,11 +133,11 @@ export default function About() {
                 whileInView={{ scale: 1, rotate: 12 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, type: "spring" }}
-                className="absolute -bottom-10 -left-10 bg-gold p-10 rounded-[3rem] shadow-2xl border-[8px] border-white transform rotate-12 hover:rotate-0 transition-transform duration-500"
+                className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 bg-gold p-6 sm:p-10 rounded-[2rem] sm:rounded-[3.3rem] shadow-2xl border-[6px] sm:border-[8px] border-white transform rotate-12 hover:rotate-0 transition-transform duration-500"
               >
                 <div className="text-maroon font-black text-center">
-                  <span className="text-3xl block mb-1">MBA · M.Com</span>
-                  <span className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-70">CA Finalist · PGDCA</span>
+                  <span className="text-xl sm:text-3xl block mb-1">MBA · M.Com</span>
+                  <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] font-bold opacity-70">CA Finalist · PGDCA</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -146,7 +146,7 @@ export default function About() {
       </section>
 
       {/* Founder's Vision */}
-      <section className="py-32 bg-maroon/[0.03] relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-maroon/[0.03] relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -155,7 +155,7 @@ export default function About() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h2 className="heading-serif text-5xl font-bold text-maroon italic">The Vision</h2>
+              <h2 className="heading-serif text-3xl font-bold text-maroon italic">The Vision</h2>
               <p className="text-2xl text-maroon/60 leading-relaxed italic font-light">
                 "APNAS Will was born from a simple realization: every family deserves the same institutional-grade financial guidance usually reserved for the ultra-wealthy."
               </p>
@@ -171,9 +171,9 @@ export default function About() {
               viewport={{ once: true }}
               className="relative"
             >
-               <div className="bg-white p-16 rounded-[4rem] shadow-2xl border border-gold/10 text-center relative z-10">
+               <div className="bg-white p-10 sm:p-16 rounded-[3rem] sm:rounded-[4rem] shadow-2xl border border-gold/10 text-center relative z-10">
                   <span className="text-9xl mb-10 block drop-shadow-2xl">🛡️</span>
-                  <p className="heading-serif text-3xl font-bold text-maroon italic leading-relaxed">
+                  <p className="heading-serif text-2xl sm:text-3xl font-bold text-maroon italic leading-relaxed">
                     "Guiding every stage of life with unwavering integrity."
                   </p>
                   <div className="h-1 w-16 bg-gold mx-auto mt-8"></div>
@@ -185,10 +185,10 @@ export default function About() {
       </section>
 
       {/* Institutional Strength Section */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-24">
-            <h2 className="heading-serif text-5xl font-bold text-maroon mb-6 tracking-tight">Our Core Strength</h2>
+            <h2 className="heading-serif text-3xl sm:text-5xl font-bold text-maroon mb-6 tracking-tight">Our Core Strength</h2>
             <div className="h-1.5 w-24 bg-gold mx-auto mb-10 rounded-full"></div>
             <p className="text-maroon/50 text-xl max-w-2xl mx-auto font-light">
               Our advisory is backed by powerful partnerships with India's leading financial institutions.
@@ -219,9 +219,9 @@ export default function About() {
       </section>
       
       {/* Footer CTA */}
-      <section className="py-32 bg-maroon text-center relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-maroon text-center relative overflow-hidden">
         <div className="mx-auto max-w-3xl px-6 relative z-10">
-           <h2 className="heading-serif text-4xl font-bold text-white mb-8">Ready to secure your legacy?</h2>
+           <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-white mb-8">Ready to secure your legacy?</h2>
            <Link 
             href="/contact"
             className="inline-block rounded-full bg-gold px-12 py-5 text-maroon font-bold text-xl shadow-2xl hover:bg-white transition-all"

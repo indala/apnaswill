@@ -82,7 +82,7 @@ function SIPCalculator() {
   return (
     <div className="bg-white rounded-[2.5rem] shadow-2xl border border-gold/10 overflow-hidden">
       {/* Header */}
-      <div className="bg-maroon px-8 pt-8 pb-6">
+      <div className="bg-maroon p-6 sm:p-8">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h3 className="heading-serif text-2xl font-bold text-white">SIP & Lumpsum Calculator</h3>
@@ -134,7 +134,7 @@ function SIPCalculator() {
       </div>
 
       {/* Controls */}
-      <div className="p-8 space-y-6">
+      <div className="p-6 sm:p-8 space-y-6">
         <AnimatePresence mode="wait">
           {mode === "sip" ? (
             <motion.div
@@ -261,7 +261,7 @@ export default function InvestmentSection() {
       </section>
 
       {/* Investment Products */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-16 sm:py-24 bg-white overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -269,7 +269,7 @@ export default function InvestmentSection() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="heading-serif text-4xl font-bold text-maroon sm:text-5xl mb-4">
+            <h2 className="heading-serif text-3xl sm:text-5xl font-bold text-maroon mb-4">
               Our Investment Universe
             </h2>
             <p className="text-maroon/50 text-lg max-w-2xl mx-auto">
@@ -286,7 +286,7 @@ export default function InvestmentSection() {
                 whileHover={{ y: -8, boxShadow: "0 30px 60px -15px rgba(99,13,13,0.12)" }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, type: "spring", stiffness: 120 }}
-                className="relative bg-maroon/[0.03] border border-gold/10 rounded-[2rem] p-8 group overflow-hidden cursor-default"
+                className="relative bg-maroon/[0.03] border border-gold/10 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 group overflow-hidden cursor-default"
               >
                 <div className="absolute inset-0 bg-linear-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="flex items-start justify-between mb-6 relative z-10">
@@ -304,7 +304,7 @@ export default function InvestmentSection() {
       </section>
 
       {/* Goal-Based Investing */}
-      <section className="py-24 bg-maroon overflow-hidden relative">
+      <section className="py-16 sm:py-24 bg-maroon overflow-hidden relative">
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-gold rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
@@ -316,7 +316,7 @@ export default function InvestmentSection() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="heading-serif text-4xl font-bold text-white sm:text-5xl mb-4">
+            <h2 className="heading-serif text-3xl sm:text-5xl font-bold text-white mb-4">
               Goal-Based Planning
             </h2>
             <p className="text-gold/70 text-lg max-w-xl mx-auto">
@@ -333,7 +333,7 @@ export default function InvestmentSection() {
                 whileHover={{ scale: 1.08, backgroundColor: "rgba(197,160,89,0.15)" }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, type: "spring", stiffness: 150 }}
-                className="flex flex-col items-center gap-3 p-6 rounded-[1.5rem] border border-white/10 bg-white/5 cursor-default group"
+                className="flex flex-col items-center gap-3 p-4 sm:p-6 rounded-[1.2rem] sm:rounded-[1.5rem] border border-white/10 bg-white/5 cursor-default group"
               >
                 <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
                   {goal.icon}
@@ -348,7 +348,7 @@ export default function InvestmentSection() {
       </section>
 
       {/* SIP Calculator + App Features */}
-      <section className="py-24 bg-maroon/[0.03] overflow-hidden">
+      <section className="py-16 sm:py-24 bg-maroon/[0.03] overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <motion.div
@@ -368,7 +368,7 @@ export default function InvestmentSection() {
               className="space-y-8"
             >
               <div>
-                <h2 className="heading-serif text-3xl font-bold text-maroon sm:text-4xl mb-4">
+                <h2 className="heading-serif text-2xl sm:text-4xl font-bold text-maroon mb-4">
                   Unified Portfolio Management
                 </h2>
                 <p className="text-maroon/50 leading-relaxed text-lg">
@@ -405,7 +405,7 @@ export default function InvestmentSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex gap-4 p-6 rounded-2xl bg-white border border-gold/10 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
+                    className="flex gap-4 p-5 sm:p-6 rounded-2xl bg-white border border-gold/10 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
                   >
                     <span className="text-2xl shrink-0 group-hover:scale-110 transition-transform">
                       {feature.icon}

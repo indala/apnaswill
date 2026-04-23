@@ -23,7 +23,7 @@ export default function Home() {
               <motion.h1
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="heading-serif text-5xl font-bold tracking-tight sm:text-7xl mb-8 leading-tight"
+                className="heading-serif text-4xl font-bold tracking-tight sm:text-7xl mb-8 leading-tight"
               >
                 <motion.span
                   animate={{
@@ -43,7 +43,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-2xl font-light text-gold italic mb-10 tracking-wide"
+                className="text-xl sm:text-2xl font-light text-gold italic mb-10 tracking-wide"
               >
                 "Guiding Every Stage of Life"
               </motion.p>
@@ -86,7 +86,7 @@ export default function Home() {
 
 
       {/* Services Preview */}
-      <section className="py-32 bg-white overflow-hidden relative">
+      <section className="py-16 sm:py-32 bg-white overflow-hidden relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -95,7 +95,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="mx-auto max-w-2xl text-center mb-24"
           >
-            <h2 className="heading-serif text-4xl font-bold tracking-tight text-maroon sm:text-5xl mb-6">Our Expertise</h2>
+            <h2 className="heading-serif text-3xl font-bold tracking-tight text-maroon sm:text-5xl mb-6">Our Expertise</h2>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: 80 }}
@@ -135,7 +135,7 @@ export default function Home() {
                   type: "spring",
                   stiffness: 100
                 }}
-                className="flex flex-col items-center text-center p-12 rounded-[3.5rem] bg-maroon/[0.03] border border-gold/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all group relative overflow-hidden"
+                className="flex flex-col items-center text-center p-8 sm:p-12 rounded-[2.5rem] sm:rounded-[3.5rem] bg-maroon/[0.03] border border-gold/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-linear-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="mb-10 flex h-24 w-24 items-center justify-center rounded-3xl bg-maroon text-5xl shadow-xl group-hover:rotate-12 transition-transform relative z-10">
@@ -235,7 +235,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {[
@@ -253,7 +253,7 @@ export default function Home() {
                 className="flex flex-col items-center group"
               >
                 <div className="h-0.5 w-8 bg-gold mb-6 group-hover:w-16 transition-all duration-500"></div>
-                <span className="heading-serif text-5xl font-bold text-maroon mb-2">{stat.value}</span>
+                <span className="heading-serif text-4xl sm:text-5xl font-bold text-maroon mb-2">{stat.value}</span>
                 <span className="text-maroon font-black text-xs uppercase tracking-[0.3em] mb-1">{stat.label}</span>
                 <span className="text-maroon/40 text-[10px] uppercase tracking-widest">{stat.sub}</span>
               </motion.div>
@@ -263,7 +263,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-maroon/[0.03] overflow-hidden relative">
+      <section className="py-16 sm:py-24 bg-maroon/[0.03] overflow-hidden relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -332,7 +332,7 @@ export default function Home() {
       <InvestmentSection />
 
       {/* FAQ Section */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-4xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -340,7 +340,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="heading-serif text-4xl font-bold text-maroon mb-6">Frequently Asked Questions</h2>
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-maroon mb-6">Frequently Asked Questions</h2>
             <div className="h-1 w-12 bg-gold mx-auto"></div>
           </motion.div>
 
@@ -369,7 +369,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="rounded-[2rem] bg-maroon/[0.03] p-8 border border-gold/5"
+                className="rounded-[1.5rem] sm:rounded-[2rem] bg-maroon/[0.03] p-6 sm:p-8 border border-gold/5"
               >
                 <h4 className="text-lg font-bold text-maroon mb-4">{faq.q}</h4>
                 <p className="text-maroon/60 leading-relaxed">{faq.a}</p>
